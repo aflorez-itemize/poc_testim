@@ -1,0 +1,17 @@
+name: Testim E2E (Manual)
+
+on:
+  workflow_dispatch: # <-- permite ejecución manual desde GitHub Actions UI
+
+jobs:
+  run-testimio-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts'
+
+      - run: npm install -g @testim/testim-cli
+      - run: testim --token "VjQDeL4zIRtsaWWNSmgyztxX8w3SMSzhaonHbiTHA96vcSmoya" --project "usw2BtKI9bpN2sajMCvLZLVC" --grid "Testim-Grid" --branch "master" --label "smoke" --test-config "HD 1366x768" --retries 1
